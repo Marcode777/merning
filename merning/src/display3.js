@@ -2,16 +2,37 @@ import React from 'react';
 
 const monsters = [
   {
-    nickname: "monster1",
+    nickname: "Jersey Devil",
+    type: "American",
     id:0
   },
   {
-    nickname: "monster2",
+    nickname: "Kolokoy",
+    type: "Philippine",
     id:1
   },
   {
-    nickname: "monster3",
+    nickname: "Lochness",
+    type:"Scottish",
     id:2
+  }
+];
+
+const cities = [
+  {
+    cityname: "New York City",
+    rating: "A++",
+    id: 0
+  },
+  {
+    cityname: "Chicago",
+    rating: "A+",
+    id: 1
+  },
+  {
+    cityname: "Los Angeles",
+    rating: "A",
+    id: 2
   }
 ];
 
@@ -21,20 +42,52 @@ const monsters = [
 
 
 
+
+
 function Monster(props){
-  return <h3>{props.nickname} {props.id}</h3>
+  return <h3> nickname: {props.nickname} type: {props.type} </h3>
   };
 
 
 
 function MonsterList(props){
   return(
-      <ul className="list-group">
+      <ul className="list-group" key={monsters.id}>
         {props.monsters.map(Monster)}
       </ul>
     );
 }
  
+
+
+function CreateMonster(props){
+
+  const submit = () => {
+    const nicknameInput = document.querySelector('#nickname');
+    const typeInput = document.querySelector('#type');
+
+    props.onAddMonster({
+      nickname: nicknameInput.value,
+      type: typeInput.value
+    });
+
+    nicknameInput.value = "";
+    typeInput.value= "";
+  };
+
+  return(
+    <div style={{display: 'flex'}}>
+      <input id="nickname" className="form-control" placeholder="Nickname"/>
+      <input id="type" className="form-control" placeholder="type"/>
+      <button className="btn btn-primary" type="button" onClick={submit}>
+        Add Monster
+      </button>
+    </div>
+  );
+
+}
+
+
 
 
 
@@ -48,11 +101,23 @@ function Monsterindexlist(props){
 
 
 
+
+
+
+
+
 class Display3 extends React.Component{
   componentWillMount(){
-    this.state = {monsters};
+    this.state = {monsters}
   }
 
+  handleAddMonster(newMonster){
+    newMonster.id = this.state.monsters.length;
+
+    this.setState({
+      monsters: this.state.monsters.concat(newMonster)
+    });
+  }
 
 
   render(){
@@ -64,6 +129,7 @@ class Display3 extends React.Component{
         
 
         <MonsterList monsters={this.state.monsters}/>
+        <CreateMonster onAddMonster={this.handleAddMonster.bind(this)}/>
       </div>
     );
   }
