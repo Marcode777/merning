@@ -46,7 +46,7 @@
 //     )
 //   }
 
-// because remember, this is JSX, which is a derivative of JavaScript, which is more strcit, but not exactly JavaScript which is less strict on syntax
+// because remember, this is JSX, which is a derivative of JavaScript, which is more strict, but not exactly JavaScript which is less strict on syntax
 // **********
 
 
@@ -61,6 +61,32 @@
 
 
 
+
+// From the start
+// componentWillMount( ) life cycle hook gets called when we initialize the app, and it sets the initial state of our app::: this.state = {monsters}, this lives at the top-level
+// we have our array of monsters ::: monsters: [{whatevermonsters with whatever key:value pairs}]
+// this array of monsters is passed into the MonsterList component ::: <MonsterList monsters={this.state.monsters}/> 
+// now the MonsterList component has an array of monsters and it maps through each element of that array via
+//       function MonsterList(props){
+//         return(
+//             <ul className="list-group" key={monsters.id}>
+//               {props.monsters.map(Monster)}
+//             </ul>
+//           );
+//       }
+// so for each element of that array, it passes each element through the Monster component above
+// so the first time, the first iteration of map is going to pass the first element of the monsters array to the Monster 
+
+// and so now that element (or object in this case, because it has key-value pairs), will have specific props (key:value pairs) extracted from it as in the following
+//      function Monster(props){
+//        return <h3>{props.nickname} {props.type} {props.id} </h3>
+//       };
+//
+//in turn those specific props will be returned within the tags to be displayed, as in the case of the first element, nickname Jersey Devil and type American will be displayed
+//
+//
+
+//LEFT OFF AT 24:28
 
 
 
