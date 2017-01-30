@@ -44,6 +44,7 @@ const cities = [
 
 
 
+
 function Monster(props){
   return <h3> nickname: {props.nickname} type: {props.type} </h3>
   };
@@ -127,7 +128,7 @@ class Display3 extends React.Component{
         <Monsterindexlist nickname="thisisanickname"/>
         <Monster  />
         
-
+        
         <MonsterList monsters={this.state.monsters}/>
         <CreateMonster onAddMonster={this.handleAddMonster.bind(this)}/>
       </div>
