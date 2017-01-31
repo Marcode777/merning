@@ -15,6 +15,11 @@ const monsters = [
     nickname: "Lochness",
     type:"Scottish",
     id:2
+  },
+  {
+    nickname: "Butch",
+    type:"'Murican",
+    id:3
   }
 ];
 
@@ -22,20 +27,19 @@ const cities = [
   {
     cityname: "New York City",
     rating: "A++",
-    id: 0
+    id: 3
   },
   {
     cityname: "Chicago",
     rating: "A+",
-    id: 1
+    id: 4
   },
   {
     cityname: "Los Angeles",
     rating: "A",
-    id: 2
+    id: 5
   }
 ];
-
 
 
 
@@ -109,7 +113,8 @@ function Monsterindexlist(props){
 
 class Display3 extends React.Component{
   componentWillMount(){
-    this.state = {monsters}
+    this.state = {monsters};
+
   }
 
   handleAddMonster(newMonster){
@@ -128,7 +133,7 @@ class Display3 extends React.Component{
         <Monsterindexlist nickname="thisisanickname"/>
         <Monster  />
         
-        
+      
         <MonsterList monsters={this.state.monsters}/>
         <CreateMonster onAddMonster={this.handleAddMonster.bind(this)}/>
       </div>
